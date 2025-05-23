@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Life Insurance - Connexion!</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    </head>
+    <body class="m-0 p-0 font-[Inria Sans]">
+        <!-- Conteneur principal avec le fond -->
+        <div class="h-screen w-screen bg-gradient-to-r from-cyan-700 to-blue-500 flex">
+
+            <!-- Colonne gauche qui laisse voir le fond -->
+            <div class="w-[40%] flex flex-col justify-center items-center text-white">
+            <img src="/images/life_logo.png" alt="Logo" class="w-96 mb-4">
+            </div>
+
+            <!-- Colonne droite avec fond blanc qui masque le reste du fond -->
+            <div class="w-[60%] bg-white flex justify-center items-center">
+                <form action="{{ path('login') }}" method="POST" class="w-2/3 max-w-md flex flex-col justify-center items-center">
+                    <h1 class="text-4xl font-bold text-[#0078AB] mb-28 text-center">Bienvenue</h1>
+
+                    <div class="mb-4">
+                    {# erreur password #}
+                    {% if error %}
+                        <div class="text-red-500 mb-4">
+                            Adresse e-mail ou mot de passe incorrect.
+                        </div>
+                    {% endif %}
+                    <label for="email" class="sr-only">Email</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                            <svg width="16" height="16" viewBox="0 0 53 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M48.5827 13.2497C48.5827 10.8205 46.5952 8.83301 44.166 8.83301H8.83268C6.40352 8.83301 4.41602 10.8205 4.41602 13.2497M48.5827 13.2497V39.7497C48.5827 42.1788 46.5952 44.1663 44.166 44.1663H8.83268C6.40352 44.1663 4.41602 42.1788 4.41602 39.7497V13.2497M48.5827 13.2497L26.4993 28.708L4.41602 13.2497" stroke="#757575" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <input type="email" name="_username" id="email"
+                            class="py-2 pl-10 w-[350px] rounded bg-gray-100"
+                            placeholder="Email" required value="{{last_username}}">
+                    </div>
+                    </div>
+
+                    <div class="mb-16">
+                    <label for="password" class="sr-only">Mot de passe</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-500">
+                            <svg width="16" height="16" viewBox="0 0 45 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.4583 22.292V13.4587C11.4583 10.5302 12.6216 7.72174 14.6924 5.65102C16.7631 3.58031 19.5716 2.41699 22.5 2.41699C25.4284 2.41699 28.2369 3.58031 30.3076 5.65102C32.3784 7.72174 33.5417 10.5302 33.5417 13.4587V22.292M7.04167 22.292H37.9583C40.3976 22.292 42.375 24.2694 42.375 26.7087V42.167C42.375 44.6062 40.3976 46.5837 37.9583 46.5837H7.04167C4.60241 46.5837 2.625 44.6062 2.625 42.167V26.7087C2.625 24.2694 4.60241 22.292 7.04167 22.292Z" stroke="#757575" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <input type="password" name="_password" id="password"
+                            class="py-2 pl-10 w-[350px] rounded bg-gray-100"
+                            placeholder="Mot de passe" required>
+                    </div>
+                    </div>
+
+                    <input type="hidden" name="_target_path" value="/"> 
+
+                    <button type="submit"
+                            class="py-2 px-12 rounded-xl bg-[#0078AB] hover:cursor-pointer text-white font-semibold hover:bg-white hover:text-[#0078AB] border-2 border-[#0078AB] transition duration-300 ease-in-out">
+                    Connexion
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+{# {% if error %}
+<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %} #}

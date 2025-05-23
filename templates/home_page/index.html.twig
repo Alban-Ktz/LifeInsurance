@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomePageController!{% endblock %}
+
+{% block body %}
+<div class="text-xl flex flex-col items-center justify-center h-screen">
+    <img src="{{ asset('images/life_logo.png') }}" alt="Logo" class="mb-4 w-[200px] h-[200px]">
+    <h1>Hello {{ user.getPrenom() }} {{ user.getNom() }}!</h1>
+    <a href="{{ path('logout') }}" data-turbo="false" class="mt-4 text-blue-500 hover:cursor-pointer hover:bg-blue-500 hover:text-white bg-white px-4 py-2 rounded-xl w-max">Se déconnecter</a>
+</div>
+{% endblock %}
