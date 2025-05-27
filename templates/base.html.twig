@@ -7,14 +7,27 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+        
+
         <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400;700&display=swap" rel="stylesheet">
 
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet">
+
+        <!-- <link href="css/bootstrap.min.css" rel="stylesheet" /> -->
+        <link href="css/template.css" rel="stylesheet" />
+        <!-- Custom styles for this template-->
+        <link href="css/style.css" rel="stylesheet" />
+
     </head>
-    <body class="font-[Inria Sans]">>
-        {% block body %}{% endblock %}
+    <body class="font-[Inria Sans]">
+        {% block body %}
+        
+
+        {% endblock %}
     </body>
 </html>

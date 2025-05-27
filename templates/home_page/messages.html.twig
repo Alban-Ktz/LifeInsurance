@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="{{ asset('style/style.css') }}">
     <link rel="stylesheet" href="{{ asset('style/template.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 {% endblock %}
 
 {% block body %}
@@ -23,7 +21,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0" />
 
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -47,18 +45,22 @@
         
       </li>
 
-      
+      <li class="nav-item">
+        <a style="font-weight:bold" class="nav-link collapsed" href="{{ path('messages') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-message"></i>
+          <span>Messages</span>
+        </a>
+      </li>
 
       <!-- Sidebar Toggler (Sidebar) -->
-
-      {# Logout button bottom #}
       <li class="nav-item mt-auto">
         <a class="nav-link" data-turbo="false" href="{{ path('logout') }}">
           <i class="fas fa-sign-out-alt"></i>
           <span>Se déconnecter</span>
         </a>
       </li>
-
+      
     </ul>
 
     <!-- Content Wrapper -->
@@ -136,7 +138,12 @@
 
           <!-- Nav Item - Messages -->
           <li class="nav-item dropdown no-arrow mx-1">
-            
+            <a class="nav-link dropdown-toggle" href="/messages" id="messagesDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-envelope fa-fw"></i>
+
+              <span class="badge badge-danger badge-counter">2</span>
+            </a>
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
               aria-labelledby="messagesDropdown">
               <h6 class="dropdown-header">Message Center</h6>
@@ -229,32 +236,24 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                        Chiffre d'affaires 2024
+                        Nombre d'employés
                       </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
-                        9,283,000 €
+                        6
                       </div>
                     </div>
                     <div class="col-auto">
-                      <i class="fas fa-money-bill-1-wave fa-2x text-gray-300"></i>
+                      <i class="fas fa-user-tie fa-2x text-gray-300"></i>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-            <div class="row">
-              <div class="card mr-4" style="height: 250px;">
-              <h3>Ventes mensuelles</h3>
-              <canvas id="barChart" style="height: 250px !important;"></canvas>
-              </div>
-              <div class="card" style="height: 250px;">
-              <h3>Trafic quotidien</h3>
-              <canvas id="lineChart" style="height: 250px !important;"></canvas>
-              </div>
-            </div>
         </div>
       </div>
+
+
     </div>
   </div>
 
@@ -289,63 +288,7 @@
   </div>
   
   <script>
-  // Bar Chart
-    new Chart(document.getElementById('barChart'), {
-      type: 'bar',
-      data: {
-        labels: ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin'],
-        datasets: [{
-          label: 'Ventes (€)',
-          data: [1200, 1900, 3000, 2500, 3200, 2800],
-          backgroundColor: '#3b82f6'
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: false }
-        }
-      }
-    });
-
-    // Doughnut Chart
-    new Chart(document.getElementById('doughnutChart'), {
-      type: 'doughnut',
-      data: {
-        labels: ['Admins', 'Clients', 'Invités'],
-        datasets: [{
-          data: [20, 70, 10],
-          backgroundColor: ['#10b981', '#3b82f6', '#f59e0b']
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { position: 'bottom' }
-        }
-      }
-    });
-
-    // Line Chart
-    new Chart(document.getElementById('lineChart'), {
-      type: 'line',
-      data: {
-        labels: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
-        datasets: [{
-          label: 'Visiteurs',
-          data: [50, 70, 80, 60, 90, 120, 100],
-          borderColor: '#ef4444',
-          backgroundColor: 'rgba(239, 68, 68, 0.1)',
-          fill: true,
-          tension: 0.4
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { position: 'bottom' }
-        }
-      }
-    });</script>
+    
+  </script>
 
 {% endblock %}
