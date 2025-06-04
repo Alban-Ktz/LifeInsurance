@@ -46,6 +46,7 @@
         
       </li>
 
+      {% if is_granted("ROLE_SECU") %}
       <li class="nav-item">
       <a class="nav-link collapsed" href="{{ path('securite') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
@@ -53,6 +54,7 @@
           <span>Sécurité</span>
         </a>
       </li>
+      {% endif %}
 
       {% if is_granted("ROLE_DARK") %}
       <li class="nav-item">
@@ -179,8 +181,11 @@
             <a class="nav-link dropdown-toggle"x id="userDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.prenom}} {{user.nom}}</span>
+{% if user.photo is not null %}
+              <img class="img-profile rounded-circle" src="images/{{user.photo}}" />
+              {% else %}
               <img class="img-profile rounded-circle" src="images/undraw_profile.svg" />
-            </a>
+              {% endif %}            </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
               <a class="dropdown-item" href="#">

@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Psr\Cache\CacheItemPoolInterface; 
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 final class HomePageController extends AbstractController
 {
@@ -164,6 +165,18 @@ final class HomePageController extends AbstractController
         return $this->redirectToRoute('securite', [
             'message' => $message,
         ]);
+    }
+
+    #[Route('/download/{filename}', name: 'download_file')]
+    public function downloadFile(string $filename): Response
+    {
+        $filePath = __DIR__ . '/../../public/uploads/' . $filename;
+
+        if (!file_exists($filePath)) {
+            throw $this->createNotFoundException('File not found');
+        }
+
+        return $this->file($filePath, null, ResponseHeaderBag::DISPOSITION_ATTACHMENT);
     }
 
 }
