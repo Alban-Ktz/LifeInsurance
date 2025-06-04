@@ -33,6 +33,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/connexion, roles: PUBLIC_ACCESS }
+        - { path: ^/get-button-status, roles: PUBLIC_ACCESS }
+        - { path: ^/update-button, roles: PUBLIC_ACCESS }
         - { path: ^/, roles: ROLE_USER }
 
 when@test:

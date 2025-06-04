@@ -11,20 +11,22 @@
 
 {% block body %}
 
+
+
 <div id="page-top">
   <!-- Page Wrapper -->
   <div id="wrapper">
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-text mx-3">LIFE INSURANCE</div>
-      </a>
+      <div class="sidebar-brand d-flex align-items-center justify-content-center" >
+        <img src="{{asset('images/life_logo.png')}}" style="width: 150px; height: 75px;" alt="">
+      </div>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0" />
 
       <li class="nav-item active">
-        <a class="nav-link" href="/">
+        <a class="nav-link" href="{{ path('homepage') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -44,8 +46,27 @@
           <i class="fas fa-note-sticky"></i>
           <span>Notes</span>
         </a>
+      </li>
+
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="{{ path('securite') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-shield-halved"></i>
+          <span>Sécurité</span>
+        </a>
+      </li>
+
+      {# if is granted "Role_dark" #}
+      {% if is_granted("ROLE_DARK") %}
+      <li class="nav-item">
+      <a class="nav-link collapsed" href="{{ path('secret_home') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-user-secret"></i>
+          <span>Face cachée</span>
+        </a>
         
       </li>
+      {% endif %}
 
       
 
@@ -157,11 +178,13 @@
               <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
             </div>
           </li>
+          
 
           <div class="topbar-divider d-none d-sm-block"></div>
 
           <!-- Nav Item - User Information -->
           <li class="nav-item dropdown no-arrow">
+             
             <a class="nav-link dropdown-toggle"x id="userDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{user.prenom}} {{user.nom}}</span>
@@ -244,18 +267,22 @@
             </div>
           </div>
             <div class="row">
-              <div class="card mr-4" style="height: 250px;">
-              <h3>Ventes mensuelles</h3>
-              <canvas id="barChart" style="height: 250px !important;"></canvas>
+              <div class="card mr-4 ml-2" style="height: 250px;">
+              <h3 class="text-primary p-2 m-2">Ventes mensuelles</h3>
+              <canvas id="barChart" class="p-2" style="height: 250px !important; width:400px !important"></canvas>
               </div>
               <div class="card" style="height: 250px;">
-              <h3>Trafic quotidien</h3>
-              <canvas id="lineChart" style="height: 250px !important;"></canvas>
+              <h3 class="text-primary p-2 m-2">Trafic quotidien</h3>
+              <canvas id="lineChart" class="p-2" style="height: 200px !important; width:400px !important"></canvas>
               </div>
             </div>
         </div>
       </div>
+      <br>
+      <br>
+      
     </div>
+    
   </div>
 
   <!-- Scroll to Top Button-->

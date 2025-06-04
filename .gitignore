@@ -5,7 +5,25 @@
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
-/vendor/
+/vendor/bin/
+/vendor/bootstrap/
+/vendor/doctrine/
+/vendor/egulias/
+/vendor/masterminds/
+/vendor/monolog/
+/vendor/myclabs/
+/vendor/nikic/
+/vendor/phar-io/
+/vendor/phpdocumentor/
+/vendor/phpunit/
+/vendor/phpstan/
+/vendor/psr/
+/vendor/sebastian/
+/vendor/symfony/
+/vendor/phpunit/
+/vendor/theseer/
+/vendor/twig/
+/vendor/webmozart/
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
