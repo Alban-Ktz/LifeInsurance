@@ -75,6 +75,16 @@ final class HomePageController extends AbstractController
         ]);
     }
 
+    #[Route('/plan', name: 'plan')]
+    public function plan(): Response
+    {
+        $user = $this->getUser();
+        
+        return $this->render('home_page/plan.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
     #[Route('/update-button', name: 'update_button', methods: ['POST'])]
     public function updateButton(Request $request, CacheItemPoolInterface $cache): Response
     {

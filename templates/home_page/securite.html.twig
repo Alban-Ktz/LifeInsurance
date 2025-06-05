@@ -93,6 +93,14 @@
       </li>
 
       <li class="nav-item">
+      <a  class="nav-link collapsed" href="{{ path('plan') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+          aria-controls="collapseTwo">
+          <i class="fas fa-map"></i>
+          <span>Plan de l'entreprise</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
       <a style="font-weight:bold" class="nav-link collapsed" href="{{ path('securite') }}" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-shield-halved"></i>
@@ -281,11 +289,11 @@
             <p>{{etat}}</p>
           {% endif %} #}
 
-          {# <h1>Bouton d'urgence</h1>
+          <h1>Bouton d'urgence</h1>
 
           <div id="panic-status" style="font-size: 2em; font-weight: bold; color: red;">
               Chargement...
-          </div> #}
+          </div>
 
           {# <!-- Content Row -->
           <div class="row">
