@@ -90,8 +90,6 @@ final class HomePageController extends AbstractController
     {
         $value = $request->request->get('value');
 
-        file_put_contents(__DIR__ . '/../../log_panic_button.txt', "[" . date('H:i:s') . "] Reçu: " . $value . PHP_EOL, FILE_APPEND);
-
         $item = $cache->getItem('panic_button');
         $item->set($value);
         $cache->save($item);
