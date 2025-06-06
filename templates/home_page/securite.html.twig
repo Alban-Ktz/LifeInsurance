@@ -270,6 +270,8 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Sécurité</h1>
+            <div id="panic-status" style="width: 16px; height: 16px; border-radius: 50%; background-color: grey; box-shadow: 0 0 10px rgba(0,0,0,0.3);"></div>
+
             {# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Generate
               Report</a> #}
@@ -288,12 +290,6 @@
           {# {% if etat is defined %}
             <p>{{etat}}</p>
           {% endif %} #}
-
-          <h1>Bouton d'urgence</h1>
-
-          <div id="panic-status" style="font-size: 2em; font-weight: bold; color: red;">
-              Chargement...
-          </div>
 
           {# <!-- Content Row -->
           <div class="row">
@@ -376,8 +372,18 @@ async function checkPanic() {
     try {
         const response = await fetch('/get-button-status');
         const data = await response.text();
-        document.getElementById('panic-status').innerText = data;
+        const panicStatus = document.getElementById('panic-status');
+
         console.log('État du bouton récupéré avec succès :', data);
+
+        if (data === '0') {
+                panicStatus.style.backgroundColor = 'red';
+                panicStatus.title = 'Bouton pressé';
+            } else {
+                panicStatus.style.backgroundColor = 'green';
+                panicStatus.title = 'Bouton relâché';
+            }
+
     } catch (e) {
         console.error('Erreur de récupération de l’état du bouton :', e);
     }

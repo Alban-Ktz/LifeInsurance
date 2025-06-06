@@ -7,9 +7,9 @@ import time
 #     with open("log.txt", "a") as f:
 #         f.write(f"[{time.strftime('%H:%M:%S')}] {msg}\n")
 
-print("Démarrage... Attente de 30 secondes pour laisser le temps à Windows d'initialiser l'Arduino.")
-# log("Script démarré. Attente initiale de 30s.")
-time.sleep(30)
+# print("Démarrage... Attente de 30 secondes pour laisser le temps à Windows d'initialiser l'Arduino.")
+# # log("Script démarré. Attente initiale de 30s.")
+# time.sleep(30)
 
 def find_arduino_port():
     ports = serial.tools.list_ports.comports()
@@ -36,10 +36,10 @@ while True:
         # log(f"Port détecté : {arduino_port}")
         
         # Reset DTR pour forcer une réinitialisation
-        arduino.setDTR(False)
-        time.sleep(1)
-        arduino.setDTR(True)
-        time.sleep(2)
+        # arduino.setDTR(False)
+        # time.sleep(1)
+        # arduino.setDTR(True)
+        # time.sleep(2)
         # log("DTR reset effectué. Attente pour initialisation de l'Arduino.")
 
         # Purger les premières lignes parasites
